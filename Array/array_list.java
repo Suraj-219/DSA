@@ -12,7 +12,20 @@ public class array_list {
         System.out.println(list);
 
         // get elem
-        int elem = list.get(1);
+        int elem = list.get(0);
         System.out.println(elem);
+
+        // add el in between
+        list.add(1,1);
+        System.out.println(list);
+
+        // set el
+        list.set(0,9);
+        System.out.println(list);
+
+        // delete
+        list.remove(3);
+        System.out.println(list);
+
     }
 }
