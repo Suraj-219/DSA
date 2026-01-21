@@ -14,11 +14,14 @@ public class input {
                 }
             }
 
+            int x = sc.nextInt();
+
             for(int i=0;i<rows;i++){
                 for(int j=0;j<coloums;j++){
-                    System.out.print(numbers[i][j] +" ");
+                   if(numbers[i][j] == x) {
+                    System.out.println("x found at locations (" + i +"," + j + ")");
+                   }
                 }
-                System.out.println();
             }
         }
     }
