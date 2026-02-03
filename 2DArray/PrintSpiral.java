@@ -1,0 +1,72 @@
+import java.util.*;
+
+public class PrintSpiral {
+    static void printMatrix(int[][] matrix) {
+        for(int i=0; i<matrix.length; i++){
+            for(int j=0; j<matrix[i].length; j++){
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    static void printSpiralOrder(int[][] matrix, int row, int col){
+        int topRow = 0;
+        int bottomRow = row-1;
+        int leftCol = 0;
+        int rightCol = col-1;
+        int totalElements = 0;
+
+        while(totalElements < row * col){
+            // topRow -> leftCol to rightCol
+            for(int j=leftCol; j<=rightCol && totalElements < row * col; j++){
+                System.out.print(matrix[topRow][j] + " ");
+                totalElements++;
+            }
+            topRow++;
+
+            // rightCol -> topRow to bottomRow
+            for(int i=topRow; i<=bottomRow && totalElements < row * col; i++){
+                System.out.print(matrix[i][rightCol] + " ");
+                totalElements++;
+            }
+            rightCol--;
+
+            // bottomRow -> rightCol to leftCol
+            for(int j=rightCol; j>=leftCol && totalElements < row * col; j--){
+                System.out.print(matrix[bottomRow][j] + " ");
+                totalElements++;
+            }
+            bottomRow--;
+
+            // leftCol -> bottomRow to topRow
+            for(int i=bottomRow; i>=topRow && totalElements < row * col; i--){
+                System.out.print(matrix[i][leftCol] + " ");
+                totalElements++;
+            }
+            leftCol++;
+        }
+    }
+
+    public static void main(String[] args) {
+        try(Scanner sc = new Scanner(System.in)){
+            System.out.print("Enter number of rows & coloumns: ");
+            int row = sc.nextInt();
+            int col = sc.nextInt();
+            int [][] matrix = new int[row][col];
+            int total = row * col;
+            System.out.println("Enter " + total + " values");
+
+            for(int i=0; i<row; i++){
+                for(int j=0; j<col; j++){
+                    matrix[i][j] = sc.nextInt();
+                }
+            }
+            System.out.println("Input Matrix");
+            printMatrix(matrix);
+
+            System.out.println("Spiral order");
+            printSpiralOrder(matrix, row, col);
+        }
+    }
+}
